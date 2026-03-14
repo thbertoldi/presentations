@@ -42,8 +42,8 @@ Agentes de IA na Engenharia de Software
 **Thiago Bertoldi**
 
 - Expert Software Engineer — IA na **SUSE**
-- Lidero o módulo de Observabilidade de IA
-- Mestrando na UFSC — Governança de IA e Estratégia Organizacional
+- Lidero o desenvolvimento do módulo de Observabilidade de IA
+- Mestrando na UFSC — Engenharia e Gestão do Conhecimento
 - Palestrante na SUSECON 2026 (Praga)
 
 </div>
@@ -100,7 +100,7 @@ Agentes de IA na Engenharia de Software
     <div class="timeline-item-left">
       <div class="timeline-dot" style="left: -0.95rem;"></div>
       <span class="timeline-year">2025</span>
-      <p class="timeline-text">Mestrado em <strong>Engenharia do Conhecimento</strong> na UFSC — Governança de IA</p>
+      <p class="timeline-text">Mestrado em <strong>Engenharia do Conhecimento</strong> na UFSC — IA</p>
     </div>
     <div class="timeline-item-right">
       <div class="timeline-dot" style="right: -0.95rem;"></div>
@@ -221,14 +221,14 @@ Durante décadas, o gargalo da engenharia de software foi a **sintaxe**.
 
 O domínio da linguagem de programação era o diferencial técnico:
 
-- Saber os quirks de cada linguagem
+- Saber o "jeito" de cada linguagem
 - Memorizar APIs e bibliotecas
 - Digitar rápido e sem erros
-- Conhecer o "jeito idiomático" de fazer cada coisa
+- Conhecer a forma idiomática de fazer alguma coisa
 
 <br>
 
-Isso está mudando. A **codificação estocástica** — o trabalho braçal de transformar lógica em código — está sendo automatizada.
+Isso está mudando. A **codificação** — o trabalho braçal de transformar lógica em código — está sendo automatizada.
 
 > O agente resolve a sintaxe. Mas quem define **o que** resolver?
 
@@ -462,7 +462,7 @@ Servidores que o agente **usa** para agir no mundo externo.
 
 <br>
 
-> Knowledge é **passivo** (o agente lê). MCP é **ativo** (o agente executa).
+> Knowledge (conhecimento) é **passivo** (o agente lê). MCP é **ativo** (o agente executa).
 
 ---
 layout: section
@@ -480,8 +480,8 @@ layout: section
 **Provedores principais**
 
 - **Anthropic** — Claude (Opus, Sonnet, Haiku)
-- **OpenAI** — GPT-4o, o3, o4-mini
-- **Google** — Gemini 2.5 Pro/Flash
+- **OpenAI** — Codex (GPT-5.4, etc.)
+- **Google** — Gemini 3 Pro/Flash
 - **Meta** — Llama 4 (open source)
 - **DeepSeek** — R1, V3
 
@@ -548,7 +548,6 @@ Cada mensagem carrega todo o histórico. Um contexto poluído não é só ruim �
 
 - Custo por token muito abaixo dos concorrentes
 - DeepSeek V3 e R1 competem com modelos premium
-- Créditos gratuitos no cadastro
 - api.deepseek.com
 
 </div>
@@ -729,7 +728,7 @@ Valores recomendados: **16384** (16k) ou **32768** (32k). Mais contexto = mais m
 |---|---|---|---|
 | **qwen3:8b** | 8B | Uso geral, bom equilíbrio | 16 GB |
 | **qwen3:14b** | 14B | Tarefas mais complexas | 32 GB |
-| **deepseek-r1:8b** | 8B | Raciocínio e lógica | 16 GB |
+| **deepseek-r1:32b** | 32B | Raciocínio e lógica | 64 GB |
 | **codellama:7b** | 7B | Foco em código | 16 GB |
 
 <br>
@@ -783,7 +782,7 @@ Você pode usar Cursor com DeepSeek, VS Code com Claude, ou qualquer combinaçã
 
 **Opções**
 
-- **OpenCode** (open source, SUSE)
+- **OpenCode** (open source)
 - Claude Code (Anthropic)
 - Codex CLI (OpenAI)
 - Aider (open source)
@@ -852,7 +851,19 @@ Crie um arquivo `opencode.json` na raiz do projeto:
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "deepseek": {}
+    "deepseek": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "DeepSeek",
+      "env": ["DEEPSEEK_API_KEY"],
+      "options": {
+        "baseURL": "https://api.deepseek.com/v1"
+      },
+      "models": {
+        "deepseek-reasoner": {
+          "name": "DeepSeek Reasoner"
+        }
+      }
+    },
   }
 }
 ```
@@ -863,7 +874,7 @@ Exporte a chave da API:
 export DEEPSEEK_API_KEY="sua-chave-aqui"
 ```
 
-Obtenha a chave em **api.deepseek.com**. O cadastro oferece créditos gratuitos para começar.
+Obtenha a chave em **api.deepseek.com**. A API opera com base na compra de créditos, então não há risco de ter um gasto acima do projetado.
 
 ---
 
@@ -874,11 +885,12 @@ Adicione um MCP server ao `opencode.json` para dar superpoderes ao agente:
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
-  "provider": {
-    "deepseek": {}
-  },
   "mcp": {
     "context7": {
+      "enabled": true,
+      "headers": {
+        "CONTEXT7_API_KEY": "<sua-chave-aqui>"
+      },
       "type": "remote",
       "url": "https://mcp.context7.com/mcp"
     }
@@ -888,7 +900,7 @@ Adicione um MCP server ao `opencode.json` para dar superpoderes ao agente:
 
 O **context7** permite que o agente busque documentação atualizada de qualquer biblioteca.
 
-Uso no prompt: `"Configure o FastAPI com autenticação JWT. use context7"`
+Uso no prompt: `"Configure o FastAPI com autenticação JWT. Use context7"`
 
 ---
 
@@ -1144,7 +1156,7 @@ Este arquivo é lido automaticamente pelo agente e guia **todas** as interaçõe
 
 <br>
 
-A IA automatiza a **codificação estocástica**: o trabalho mecânico de transformar lógica em sintaxe.
+A IA automatiza a **codificação**: o trabalho mecânico de transformar lógica em sintaxe.
 
 A **decomposição lógica** e a **modelagem do sistema** continuam sendo responsabilidade exclusiva do engenheiro.
 
@@ -1184,7 +1196,6 @@ wsl --install -d openSUSE-Tumbleweed
 
 - **Rancher Desktop** — alternativa open source ao Docker Desktop
 - Desenvolvido pela SUSE
-- Suporte a containerd e dockerd
 
 </div>
 </div>
