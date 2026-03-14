@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&family=Poppins:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  /* SUSE Brand Colors */
+  --suse-pine-green: #0C322C;
+  --suse-green: #30BA78;
+  --suse-blue: #2453FF;
+  --suse-orange: #FE7C3F;
+  --suse-navy: #192072;
+  --suse-mint: #90EBCD;
+  --suse-light-gray: #EFEFEF;
+  --suse-white: #FFFFFF;
+  --suse-gray: #999999;
+
+  /* Slidev overrides */
+  --slidev-theme-primary: var(--suse-green);
+}
+
+/* Force light background on all content slides */
+.slidev-layout {
+  font-family: 'SUSE', sans-serif;
+  color: var(--suse-pine-green) !important;
+  background-color: var(--suse-white) !important;
+  padding: 2.5rem 3rem;
+}
+
+/* Headings */
+.slidev-layout h1 {
+  font-family: 'SUSE', sans-serif;
+  font-weight: 500;
+  color: var(--suse-pine-green) !important;
+  font-size: 1.75rem;
+  line-height: 1.3;
+  border-bottom: 2px solid var(--suse-green);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.slidev-layout h2 {
+  font-family: 'SUSE', sans-serif;
+  font-weight: 500;
+  color: var(--suse-pine-green) !important;
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.slidev-layout h3 {
+  font-family: 'SUSE', sans-serif;
+  font-weight: 400;
+  color: var(--suse-pine-green) !important;
+  font-size: 1.1rem;
+}
+
+/* Body text */
+.slidev-layout p,
+.slidev-layout li {
+  font-family: 'SUSE', sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--suse-pine-green) !important;
+}
+
+/* Bold text */
+.slidev-layout strong {
+  font-weight: 600;
+  color: var(--suse-pine-green) !important;
+}
+
+/* Links */
+.slidev-layout a {
+  color: var(--suse-green) !important;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.slidev-layout a:hover {
+  border-bottom-color: var(--suse-green);
+}
+
+/* Lists */
+.slidev-layout ul {
+  list-style: none;
+  padding-left: 1.2rem;
+}
+
+.slidev-layout ul > li {
+  position: relative;
+  padding-left: 0.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.slidev-layout ul > li::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 0.55rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--suse-green);
+}
+
+/* Nested lists */
+.slidev-layout ul ul > li::before {
+  background-color: transparent;
+  border: 1.5px solid var(--suse-green);
+}
+
+/* Ordered lists */
+.slidev-layout ol {
+  padding-left: 1.5rem;
+}
+
+.slidev-layout ol > li {
+  margin-bottom: 0.3rem;
+}
+
+.slidev-layout ol > li::marker {
+  color: var(--suse-green);
+  font-weight: 600;
+}
+
+/* Tables */
+.slidev-layout table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin: 0.75rem 0;
+}
+
+.slidev-layout table th {
+  font-family: 'SUSE', sans-serif;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--suse-pine-green) !important;
+  color: var(--suse-white) !important;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.slidev-layout table td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--suse-light-gray);
+  color: var(--suse-pine-green) !important;
+}
+
+.slidev-layout table tr:last-child td {
+  border-bottom: none;
+}
+
+.slidev-layout table tbody tr:nth-child(even) {
+  background-color: rgba(144, 235, 205, 0.08);
+}
+
+/* Code blocks */
+.slidev-layout pre {
+  border-radius: 8px;
+  border: 1px solid rgba(12, 50, 44, 0.1);
+  font-size: 0.82rem;
+}
+
+.slidev-layout code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85em;
+}
+
+.slidev-layout p code,
+.slidev-layout li code {
+  background-color: rgba(48, 186, 120, 0.1) !important;
+  color: var(--suse-pine-green) !important;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+/* Blockquotes */
+.slidev-layout blockquote {
+  border-left: 3px solid var(--suse-green);
+  padding: 0.5rem 1rem;
+  margin: 0.75rem 0;
+  background-color: rgba(48, 186, 120, 0.06) !important;
+  border-radius: 0 6px 6px 0;
+}
+
+.slidev-layout blockquote p {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--suse-pine-green) !important;
+  opacity: 0.85;
+  font-size: 0.9rem;
+}
+
+/* Cover layout — dark Pine Green background */
+.slidev-layout.cover,
+.slidev-layout.cover.slidev-page {
+  background-color: var(--suse-pine-green) !important;
+  color: var(--suse-white) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slidev-layout.cover h1 {
+  color: var(--suse-green) !important;
+  font-size: 2.5rem;
+  font-weight: 600;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0.5rem;
+}
+
+.slidev-layout.cover p,
+.slidev-layout.cover span,
+.slidev-layout.cover div {
+  color: var(--suse-light-gray) !important;
+}
+
+/* Section layout — dark Pine Green background */
+.slidev-layout.section {
+  background-color: var(--suse-pine-green) !important;
+  color: var(--suse-white) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slidev-layout.section h1 {
+  color: var(--suse-green) !important;
+  font-size: 2.2rem;
+  font-weight: 600;
+  border-bottom: none;
+  padding-bottom: 0;
+  text-align: left;
+}
+
+/* Center layout */
+.slidev-layout.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.slidev-layout.center h1 {
+  border-bottom: none;
+  font-size: 2rem;
+}
+
+/* Slide number */
+.slidev-page-number {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: var(--suse-gray) !important;
+}
+
+/* Progress bar */
+.slidev-progress {
+  background-color: var(--suse-green) !important;
+}
+
+/* Grid helper */
+.grid {
+  gap: 1.5rem;
+}

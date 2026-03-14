@@ -25,3 +25,47 @@ Please refer to the individual license files for complete details and conditions
 ## Contributing
 
 Contributions are welcome! If you would like to contribute, please ensure that any new code adheres to the MPL 2.0 and any new non‑code content adheres to the CC BY‑SA 4.0.
+
+## Slidev Presentations
+
+This repository uses [Slidev](https://sli.dev) for creating presentations. The setup follows a hybrid approach: a single Slidev installation with multiple presentation folders.
+
+### Structure
+
+```
+en/               # English presentations
+  intro/          # Example presentation
+    slides.md     # Slidev markdown file
+pt/               # Portuguese presentations
+  intro/          # Example presentation
+    slides.md     # Slidev markdown file
+templates/        # Shared components and layouts
+  components/     # Reusable Vue components
+  layouts/        # Custom layouts
+vite.config.ts    # Vite configuration (shared)
+package.json      # Dependencies and scripts
+```
+
+### Getting Started
+
+1. Install dependencies (using bun):
+   ```bash
+   bun install
+   ```
+
+2. Run a presentation:
+   ```bash
+   bun run slidev:en:intro    # English intro
+   bun run slidev:pt:intro    # Portuguese intro
+   ```
+
+3. Create a new presentation:
+   - Create a new folder under `en/` or `pt/`
+   - Add a `slides.md` file with frontmatter
+   - Add a new script in `package.json` if needed
+
+### Customization
+
+- Shared components are in `templates/components/` and are auto-imported.
+- Edit `vite.config.ts` for global Vite configuration.
+- Each presentation can have its own `setup/` folder for custom components.

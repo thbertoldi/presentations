@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.log
+.slidev/
+.DS_Store
+*.local
+.env
+*.pdf
+*.png
+!**/public/**/*.png

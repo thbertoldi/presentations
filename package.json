@@ -1,0 +1,29 @@
+{
+  "name": "presentations",
+  "version": "1.0.0",
+  "description": "This repository contains presentations, slide decks, and related materials.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "slidev:en:intro": "slidev en/intro/slides.md",
+    "slidev:pt:intro": "slidev pt/intro/slides.md",
+    "slidev": "slidev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thbertoldi/presentations.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thbertoldi/presentations/issues"
+  },
+  "homepage": "https://github.com/thbertoldi/presentations#readme",
+  "devDependencies": {
+    "@slidev/cli": "^52.14.1"
+  },
+  "dependencies": {
+    "@slidev/theme-default": "^0.25.0"
+  }
+}
