@@ -14,6 +14,12 @@ fonts:
   mono: Fira Code
 ---
 
+<div class="absolute inset-0">
+  <img src="/suse-cover-bg.svg" style="width: 100%; height: 100%; object-fit: cover;" />
+</div>
+
+---
+
 # Pensamento Sistêmico além das amarras da linguagem
 
 Agentes de IA na Engenharia de Software
@@ -35,8 +41,8 @@ Agentes de IA na Engenharia de Software
 
 **Thiago Bertoldi**
 
-- Expert Software Engineer — AI na **SUSE**
-- Lidero o módulo de AI Observability
+- Expert Software Engineer — IA na **SUSE**
+- Lidero o módulo de Observabilidade de IA
 - Mestrando na UFSC — Governança de IA e Estratégia Organizacional
 - Palestrante na SUSECON 2026 (Praga)
 
@@ -46,9 +52,9 @@ Agentes de IA na Engenharia de Software
 **Certificações relevantes**
 
 - CrewAI Multi-Agent Systems
-- Observability com OpenTelemetry
+- Observabilidade com OpenTelemetry
 - Kubernetes AI/ML
-- AI Observability
+- Observabilidade de IA
 
 </div>
 </div>
@@ -87,7 +93,7 @@ Agentes de IA na Engenharia de Software
     <div class="timeline-item-right">
       <div class="timeline-dot" style="right: -0.95rem;"></div>
       <span class="timeline-year">2024</span>
-      <p class="timeline-text">Expert Software Engineer — AI na <strong>SUSE</strong>. Lidero o módulo de AI Observability</p>
+      <p class="timeline-text">Expert Software Engineer — AI na <strong>SUSE</strong>. Lidero o módulo de Observabilidade de IA</p>
     </div>
     <div class="timeline-item-left"></div>
     <div class="timeline-item-right"></div>
@@ -169,7 +175,7 @@ Agentes de IA na Engenharia de Software
 - Mais de 1.700 funcionários em 30+ países
 - Compromisso com **escolha**, **inovação**, **confiança** e **comunidade**
 
-**Por que open source importa para vocês**
+**Por que o open source importa para vocês**
 
 - Código aberto = transparência e auditabilidade
 - Sem vendor lock-in: você escolhe suas ferramentas
@@ -182,14 +188,18 @@ Agentes de IA na Engenharia de Software
 </div>
 
 ---
-layout: section
----
 
 # Pergunta para vocês
 
+<div class="text-2xl mt-8">
+
 Quantos de vocês já usaram alguma ferramenta de IA para escrever código?
 
-<p class="mt-4 opacity-50" style="color: #90EBCD;">Copilot, ChatGPT, Cursor, Claude...</p>
+</div>
+
+<br>
+
+<p class="text-lg opacity-50">Copilot, ChatGPT, Cursor, Claude...</p>
 
 ---
 layout: section
@@ -220,7 +230,7 @@ O domínio da linguagem de programação era o diferencial técnico:
 
 Isso está mudando. A **codificação estocástica** — o trabalho braçal de transformar lógica em código — está sendo automatizada.
 
-> O agente resolve a sintaxe. Mas quem define **o quê** resolver?
+> O agente resolve a sintaxe. Mas quem define **o que** resolver?
 
 ---
 
@@ -329,22 +339,74 @@ A lógica que dá ao cérebro um corpo.
 
 # A estrutura completa
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                        Agente                           │
-│                                                         │
-│   ┌─────────────────┐    ┌─────────────────────────┐    │
-│   │   Orquestrador  │    │    LLM (cérebro)        │    │
-│   │   (cognição)    │◄──►│    Raciocina e gera      │    │
-│   └────────┬────────┘    └─────────────────────────┘    │
-│            │                                            │
-│   ┌────────┼────────────────────────────┐               │
-│   │        │                            │               │
-│   ▼        ▼                            ▼               │
-│  Tools   Knowledge                     MCP              │
-│  (agir)  (entender)               (conectar)            │
-└─────────────────────────────────────────────────────────┘
-```
+<div class="agent-diagram">
+  <div class="agent-box">
+    <div class="agent-label">Agente</div>
+    <div class="agent-top">
+      <div class="agent-block orchestrator">Orquestrador<br><span>(cognição)</span></div>
+      <div class="agent-arrow">&#8596;</div>
+      <div class="agent-block llm">LLM<br><span>(cérebro)</span></div>
+    </div>
+    <div class="agent-bottom">
+      <div class="agent-block-sm">Tools<br><span>(agir)</span></div>
+      <div class="agent-block-sm">Knowledge<br><span>(entender)</span></div>
+      <div class="agent-block-sm">MCP<br><span>(conectar)</span></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .agent-diagram { display: flex; justify-content: center; margin: 0.5rem 0; }
+  .agent-box {
+    border: 2px solid #30BA78;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    width: 85%;
+    position: relative;
+  }
+  .agent-label {
+    position: absolute;
+    top: -0.7rem;
+    left: 1.5rem;
+    background: white;
+    padding: 0 0.5rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #0C322C;
+  }
+  .agent-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .agent-arrow { font-size: 1.5rem; color: #30BA78; }
+  .agent-block {
+    border: 1.5px solid #0C322C;
+    border-radius: 8px;
+    padding: 0.5rem 1.2rem;
+    text-align: center;
+    font-size: 0.85rem !important;
+    font-weight: 500;
+    color: #0C322C !important;
+  }
+  .agent-block span { font-weight: 300; font-size: 0.75rem !important; color: #999 !important; }
+  .agent-block.llm { background: rgba(48, 186, 120, 0.1); }
+  .agent-bottom {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1.5px dashed #90EBCD;
+    padding-top: 0.8rem;
+  }
+  .agent-block-sm {
+    text-align: center;
+    font-size: 0.8rem !important;
+    font-weight: 500;
+    color: #0C322C !important;
+  }
+  .agent-block-sm span { font-weight: 300; font-size: 0.7rem !important; color: #999 !important; }
+</style>
 
 Quando você usa um editor com IA, você está escolhendo **dois componentes independentes**:
 
@@ -446,7 +508,7 @@ layout: section
 
 <div class="text-lg">
 
-A janela de contexto é tudo que o modelo "enxerga" ao gerar uma resposta.
+A janela de contexto é tudo o que o modelo "enxerga" ao gerar uma resposta.
 
 </div>
 
@@ -522,7 +584,7 @@ Cada mensagem carrega todo o histórico. Um contexto poluído não é só ruim �
 - Gemini 2.5 Flash
 - Qwen3
 
-Crie uma conta e use a API key em qualquer agente que suporte OpenAI-compatible.
+Crie uma conta e use a API key em qualquer agente que suporte a APIs compatíveis com OpenAI.
 
 </div>
 </div>
