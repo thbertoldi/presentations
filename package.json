@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "slidev:en:intro": "slidev en/intro/slides.md",
-    "slidev:pt:intro": "slidev pt/intro/slides.md",
+    "slidev:pt:2026_SAAC": "slidev pt/2026_SAAC/slides.md",
     "slidev": "slidev"
   },
   "repository": {

@@ -24,6 +24,8 @@ Agentes de IA na Engenharia de Software
   <p class="text-xs opacity-40 mt-2">thiagobertoldi.com · github.com/thbertoldi</p>
 </div>
 
+<img src="/suse-logo.svg" alt="SUSE" style="position: absolute; bottom: 2rem; right: 3rem; height: 60px; opacity: 0.7;" />
+
 ---
 
 # Quem sou eu
@@ -158,7 +160,7 @@ Agentes de IA na Engenharia de Software
 
 # Sobre a SUSE
 
-<div class="grid grid-cols-2 gap-8">
+<div class="grid grid-cols-[1fr_auto] gap-8">
 <div>
 
 - Fundada em 1992 na Alemanha — uma das empresas open source mais antigas do mundo
@@ -167,20 +169,27 @@ Agentes de IA na Engenharia de Software
 - Mais de 1.700 funcionários em 30+ países
 - Compromisso com **escolha**, **inovação**, **confiança** e **comunidade**
 
-</div>
-<div>
-
 **Por que open source importa para vocês**
 
 - Código aberto = transparência e auditabilidade
 - Sem vendor lock-in: você escolhe suas ferramentas
-- Comunidade global colaborando para resolver problemas reais
 - Todos os exemplos desta palestra usam ferramentas open source
 
-> "Tecnologia deve empoderar as pessoas e respeitar sua soberania."
+</div>
+<div class="flex items-center">
+  <img src="/suse-logo.svg" alt="SUSE" style="height: 140px; opacity: 0.85;" />
+</div>
+</div>
 
-</div>
-</div>
+---
+layout: section
+---
+
+# Pergunta para vocês
+
+Quantos de vocês já usaram alguma ferramenta de IA para escrever código?
+
+<p class="mt-4 opacity-50" style="color: #90EBCD;">Copilot, ChatGPT, Cursor, Claude...</p>
 
 ---
 layout: section
@@ -730,6 +739,8 @@ layout: section
 
 # OpenCode: um agente open source
 
+<img src="/suse-logo.svg" alt="SUSE" style="position: absolute; bottom: 3rem; right: 3rem; height: 50px; opacity: 0.4; filter: brightness(3);" />
+
 ---
 
 # O que é o OpenCode
@@ -909,6 +920,34 @@ projeto/
 - Quanto melhor sua documentação, melhor o agente trabalha.
 
 > Documentar o domínio deixou de ser "burocracia" — agora é **infraestrutura**.
+
+---
+
+# Exemplo: um AGENTS.md real
+
+```markdown
+# AGENTS.md
+
+## Linguagem e estilo
+- Use Go. Siga o padrão do projeto (handlers em /api, lógica em /domain).
+- Nomes em inglês. Comentários e commits em português.
+- Trate erros explicitamente — nunca use _ para ignorar um error.
+
+## Arquitetura
+- Hexagonal: ports em /domain/ports, adapters em /infra.
+- Cada novo endpoint precisa de testes em /api/*_test.go.
+- Não crie dependências diretas entre adapters.
+
+## Regras do domínio
+- "Pedido" só pode ser cancelado se status == "pendente".
+- Preço final = subtotal - desconto + frete. Nunca negativo.
+
+## O que NÃO fazer
+- Não altere migrations existentes — crie novas.
+- Não adicione dependências sem aprovação (abra issue antes).
+```
+
+Este arquivo é lido automaticamente pelo agente e guia **todas** as interações.
 
 ---
 
