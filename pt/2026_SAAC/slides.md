@@ -1015,38 +1015,103 @@ Este arquivo é lido automaticamente pelo agente e guia **todas** as interaçõe
 
 # Decompondo tarefas: a habilidade central
 
-<div class="grid grid-cols-2 gap-8">
-<div>
-
-**Não faça isso**
-
-"Crie um sistema de e-commerce completo"
-
-O agente vai alucinar, perder contexto e produzir código inconsistente.
-
+<div class="decomp">
+  <div class="decomp-monolith">
+    <div class="decomp-bad-label">Pedido monolítico</div>
+    <div class="decomp-bad-box">"Crie um sistema de e-commerce completo"</div>
+    <div class="decomp-result-bad">Alucinação, perda de contexto, código inconsistente</div>
+  </div>
+  <div class="decomp-arrow-down">&#8595;</div>
+  <div class="decomp-waterfall">
+    <div class="decomp-good-label">Decomposição em etapas validáveis</div>
+    <div class="decomp-steps">
+      <div class="decomp-step">
+        <div class="decomp-step-num">1</div>
+        <div class="decomp-step-text">"Crie o modelo de dados para produtos"</div>
+        <div class="decomp-check">&#10003;</div>
+      </div>
+      <div class="decomp-step-arrow">&#8594;</div>
+      <div class="decomp-step">
+        <div class="decomp-step-num">2</div>
+        <div class="decomp-step-text">"Implemente o endpoint de listagem"</div>
+        <div class="decomp-check">&#10003;</div>
+      </div>
+      <div class="decomp-step-arrow">&#8594;</div>
+      <div class="decomp-step">
+        <div class="decomp-step-num">3</div>
+        <div class="decomp-step-text">"Adicione filtros por categoria"</div>
+        <div class="decomp-check">&#10003;</div>
+      </div>
+      <div class="decomp-step-arrow">&#8594;</div>
+      <div class="decomp-step">
+        <div class="decomp-step-num">4</div>
+        <div class="decomp-step-text">"Escreva testes para o endpoint"</div>
+        <div class="decomp-check">&#10003;</div>
+      </div>
+    </div>
+  </div>
 </div>
-<div>
 
-**Faça isso**
+<p class="mt-3 text-sm" style="text-align: center; color: #0C322C;">
+  Cada etapa cabe no contexto · Pode ser validada antes de avançar · Você mantém controle sobre a <strong>arquitetura</strong>
+</p>
 
-1. "Crie o modelo de dados para produtos"
-2. "Implemente o endpoint de listagem"
-3. "Adicione filtros por categoria"
-4. "Escreva testes para o endpoint"
+<p class="mt-2" style="text-align: center; font-size: 0.95rem; color: #0C322C;">
+  <span style="background: rgba(48, 186, 120, 0.15); padding: 0.2em 0.6em; border-radius: 4px; border-left: 3px solid #30BA78;">
+    Decomposição de tarefas <strong>é</strong> pensamento sistêmico aplicado.
+  </span>
+</p>
 
-</div>
-</div>
-
-<br>
-
-**Por que isso funciona:**
-
-- Tarefas menores cabem na janela de contexto
-- Cada etapa pode ser validada antes de avançar
-- O agente mantém foco em **um** problema
-- Você mantém o controle sobre a **arquitetura**
-
-Decomposição de tarefas **é** pensamento sistêmico aplicado.
+<style>
+  .decomp { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; margin-top: 0.3rem; }
+  .decomp-monolith { text-align: center; width: 90%; }
+  .decomp-bad-label { font-size: 0.7rem; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+  .decomp-bad-box {
+    border: 2px solid #FE7C3F;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    color: #0C322C;
+    background: rgba(254, 124, 63, 0.06);
+  }
+  .decomp-result-bad { font-size: 0.7rem; color: #FE7C3F; margin-top: 0.2rem; }
+  .decomp-arrow-down { font-size: 1.2rem; color: #30BA78; }
+  .decomp-waterfall { width: 90%; }
+  .decomp-good-label { font-size: 0.7rem; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; text-align: center; }
+  .decomp-steps { display: flex; align-items: center; justify-content: center; gap: 0.2rem; }
+  .decomp-step {
+    border: 1.5px solid #30BA78;
+    border-radius: 8px;
+    padding: 0.35rem 0.5rem;
+    text-align: center;
+    background: rgba(48, 186, 120, 0.05);
+    position: relative;
+    flex: 1;
+    min-width: 0;
+  }
+  .decomp-step-num {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #30BA78;
+    margin-bottom: 0.15rem;
+  }
+  .decomp-step-text { font-size: 0.65rem !important; color: #0C322C !important; line-height: 1.3 !important; }
+  .decomp-check {
+    position: absolute;
+    top: -0.4rem;
+    right: -0.3rem;
+    background: #30BA78;
+    color: white;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    font-size: 0.55rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .decomp-step-arrow { font-size: 0.9rem; color: #90EBCD; flex-shrink: 0; }
+</style>
 
 ---
 
