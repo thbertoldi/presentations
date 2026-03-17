@@ -1,71 +1,130 @@
-# Presentations Repository
+# Presentations
 
-This repository contains presentations, slide decks, and related materials.
+Slide decks and LinkedIn carousels built with [Slidev](https://sli.dev), organized by content type and language.
 
-## Overview
+## Project structure
 
-This repository is a collection of presentation materials, including slide decks, notes, and any accompanying code samples. The content is organized by topic or event.
+```
+themes/                          Shared CSS themes
+  harpy.css                        General-purpose (Inter + JetBrains Mono)
+  suse.css                         SUSE brand (SUSE font + Fira Code)
+  linkedin.css                     LinkedIn carousel (1:1 square, large fonts)
+
+talks/                           16:9 presentations for events
+  en/
+    2026-saac/                     SAAC talk (English)
+    harpy-intro/                   Harpy theme demo
+  pt/
+    2026-saac/                     SAAC talk (Portuguese)
+
+linkedin/                        1:1 carousels for LinkedIn
+  en/
+    _template/                     Starter template
+  pt/
+```
+
+Each presentation is a self-contained Slidev project folder with:
+
+- `slides.md` — slide content
+- `style.css` — imports from `themes/`
+- `global-bottom.vue` — footer (page numbers, progress bar, or carousel handle)
+- `public/` — static assets (images, SVGs)
+
+## Getting started
+
+Install dependencies:
+
+```bash
+bun install
+```
+
+Run a presentation in dev mode:
+
+```bash
+# Talks
+bunx slidev talks/en/harpy-intro/slides.md
+bunx slidev talks/pt/2026-saac/slides.md
+
+# LinkedIn carousels
+bunx slidev linkedin/en/_template/slides.md
+```
+
+## Creating new content
+
+### New talk
+
+```bash
+cp -r talks/en/harpy-intro talks/en/my-new-talk
+# Edit talks/en/my-new-talk/slides.md
+bunx slidev talks/en/my-new-talk/slides.md
+```
+
+### New LinkedIn carousel
+
+```bash
+cp -r linkedin/en/_template linkedin/en/my-carousel
+# Edit linkedin/en/my-carousel/slides.md
+bunx slidev linkedin/en/my-carousel/slides.md
+```
+
+### New language version
+
+Copy an existing presentation into the target language folder:
+
+```bash
+cp -r talks/en/2026-saac talks/pt/2026-saac
+# Translate talks/pt/2026-saac/slides.md
+```
+
+## Themes
+
+All themes live in `themes/` and are imported via `style.css` in each presentation folder:
+
+```css
+@import '../../../themes/harpy.css';
+```
+
+| Theme | Aspect ratio | Fonts | Best for |
+|---|---|---|---|
+| `harpy.css` | 16:9 | Inter, JetBrains Mono | General tech talks |
+| `suse.css` | 16:9 | SUSE, Fira Code | SUSE-branded events |
+| `linkedin.css` | 1:1 | Inter, JetBrains Mono | LinkedIn carousels |
+
+The LinkedIn theme includes utility classes for carousel-specific elements:
+
+- `.carousel-page` — page counter badge (top-right)
+- `.carousel-handle` — author handle footer (bottom)
+- `.swipe-hint` — swipe arrow (bottom-right)
+- `.accent-top` — gold top border for visual emphasis
+
+## Exporting
+
+### Talk to PDF
+
+```bash
+bunx slidev export talks/en/2026-saac/slides.md --per-slide
+```
+
+### Carousel to PDF (for LinkedIn upload)
+
+```bash
+bunx slidev export linkedin/en/my-carousel/slides.md --per-slide
+```
+
+### Carousel to PNG (individual images)
+
+```bash
+bunx slidev export linkedin/en/my-carousel/slides.md --format png --per-slide
+```
+
+> Export requires `playwright-chromium`. Install it with `bun add -D playwright-chromium` if export fails.
 
 ## License
 
 ### Code
-All code in this repository is licensed under the **Mozilla Public License 2.0 (MPL 2.0)**. See the [LICENSE-MPL-2.0.txt](LICENSE-MPL-2.0.txt) file for the full license text.
 
-### Non‑Code Content
-All slide decks, text, images, and other non‑code creative content are licensed under the **Creative Commons Attribution‑ShareAlike 4.0 International License (CC BY‑SA 4.0)**. See the [LICENSE-CC-BY-SA-4.0.txt](LICENSE-CC-BY-SA-4.0.txt) file for the full license text.
+All code is licensed under the **Mozilla Public License 2.0 (MPL 2.0)**. See [LICENSE-MPL-2.0.txt](LICENSE-MPL-2.0.txt).
 
-## Usage
+### Non-code content
 
-You are free to:
-- Use, modify, and distribute the code under the terms of the MPL 2.0.
-- Share and adapt the non‑code content under the terms of the CC BY‑SA 4.0, provided you give appropriate credit, indicate if changes were made, and distribute your contributions under the same license.
-
-Please refer to the individual license files for complete details and conditions.
-
-## Contributing
-
-Contributions are welcome! If you would like to contribute, please ensure that any new code adheres to the MPL 2.0 and any new non‑code content adheres to the CC BY‑SA 4.0.
-
-## Slidev Presentations
-
-This repository uses [Slidev](https://sli.dev) for creating presentations. The setup follows a hybrid approach: a single Slidev installation with multiple presentation folders.
-
-### Structure
-
-```
-en/               # English presentations
-  intro/          # Example presentation
-    slides.md     # Slidev markdown file
-pt/               # Portuguese presentations
-  intro/          # Example presentation
-    slides.md     # Slidev markdown file
-templates/        # Shared components and layouts
-  components/     # Reusable Vue components
-  layouts/        # Custom layouts
-vite.config.ts    # Vite configuration (shared)
-package.json      # Dependencies and scripts
-```
-
-### Getting Started
-
-1. Install dependencies (using bun):
-   ```bash
-   bun install
-   ```
-
-2. Run a presentation:
-   ```bash
-   bun run slidev:en:intro    # English intro
-   bun run slidev:pt:intro    # Portuguese intro
-   ```
-
-3. Create a new presentation:
-   - Create a new folder under `en/` or `pt/`
-   - Add a `slides.md` file with frontmatter
-   - Add a new script in `package.json` if needed
-
-### Customization
-
-- Shared components are in `templates/components/` and are auto-imported.
-- Edit `vite.config.ts` for global Vite configuration.
-- Each presentation can have its own `setup/` folder for custom components.
+All slide decks, text, images, and other non-code creative content are licensed under the **Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)**. See [LICENSE-CC-BY-SA-4.0.txt](LICENSE-CC-BY-SA-4.0.txt).

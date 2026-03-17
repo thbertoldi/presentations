@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Harpy palette (shared) */
+  --harpy-obsidian: #1A1C20;
+  --harpy-crown-ash: #B5B9BE;
+  --harpy-talon-gold: #F2A900;
+  --harpy-underbelly: #F8F9FA;
+  --harpy-obsidian-light: #2A2D33;
+  --harpy-crown-ash-dark: #8A8F96;
+  --harpy-crown-ash-light: #D5D8DC;
+  --harpy-talon-gold-dim: rgba(242, 169, 0, 0.15);
+
+  --slidev-theme-primary: var(--harpy-talon-gold);
+}
+
+/*
+ * LinkedIn Carousel Layout
+ * Square format (1:1), designed for high-impact single-idea slides.
+ * Each slide = one card in the carousel.
+ */
+
+/* Base: square slide, generous padding, centered content */
+.slidev-layout {
+  font-family: 'Inter', sans-serif;
+  color: var(--harpy-obsidian);
+  background-color: var(--harpy-underbelly) !important;
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Headings: large, bold, attention-grabbing */
+.slidev-layout h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  color: var(--harpy-obsidian);
+  font-size: 2.8rem;
+  line-height: 1.15;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 1rem;
+}
+
+.slidev-layout h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--harpy-obsidian);
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.slidev-layout h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--harpy-crown-ash-dark);
+  font-size: 1.4rem;
+}
+
+/* Body text: larger for readability on mobile */
+.slidev-layout p,
+.slidev-layout li {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--harpy-obsidian);
+}
+
+.slidev-layout strong {
+  font-weight: 700;
+  color: var(--harpy-obsidian);
+}
+
+/* Links */
+.slidev-layout a {
+  color: var(--harpy-talon-gold);
+  text-decoration: none;
+}
+
+/* Lists: spacious for square format */
+.slidev-layout ul {
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+.slidev-layout ul > li {
+  position: relative;
+  padding-left: 0.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.slidev-layout ul > li::before {
+  content: '';
+  position: absolute;
+  left: -1.1rem;
+  top: 0.6rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--harpy-talon-gold);
+}
+
+.slidev-layout ul ul > li::before {
+  background-color: transparent;
+  border: 2px solid var(--harpy-talon-gold);
+}
+
+/* Ordered lists */
+.slidev-layout ol {
+  padding-left: 1.8rem;
+}
+
+.slidev-layout ol > li {
+  margin-bottom: 0.6rem;
+}
+
+.slidev-layout ol > li::marker {
+  color: var(--harpy-talon-gold);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+/* Code: larger for readability */
+.slidev-layout pre {
+  border-radius: 12px;
+  border: 1px solid rgba(26, 28, 32, 0.12);
+  font-size: 1rem;
+}
+
+.slidev-layout code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+}
+
+.slidev-layout p code,
+.slidev-layout li code {
+  background-color: var(--harpy-talon-gold-dim) !important;
+  color: var(--harpy-obsidian);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+/* Blockquotes: prominent for carousel impact */
+.slidev-layout blockquote {
+  border-left: 4px solid var(--harpy-talon-gold);
+  padding: 0.8rem 1.2rem;
+  margin: 1rem 0;
+  background-color: var(--harpy-talon-gold-dim) !important;
+  border-radius: 0 8px 8px 0;
+}
+
+.slidev-layout blockquote p {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--harpy-obsidian);
+  font-size: 1.2rem;
+}
+
+/* Cover: dark obsidian, big title */
+.slidev-layout.cover,
+.slidev-layout.cover.slidev-page {
+  background-color: var(--harpy-obsidian) !important;
+  color: var(--harpy-underbelly) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3.5rem 3rem;
+}
+
+.slidev-layout.cover h1 {
+  color: var(--harpy-talon-gold) !important;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.slidev-layout.cover p,
+.slidev-layout.cover span,
+.slidev-layout.cover div {
+  color: var(--harpy-crown-ash) !important;
+}
+
+/* Section: dark divider card */
+.slidev-layout.section {
+  background-color: var(--harpy-obsidian) !important;
+  color: var(--harpy-underbelly) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3.5rem 3rem;
+}
+
+.slidev-layout.section h1 {
+  color: var(--harpy-talon-gold) !important;
+  font-size: 2.8rem;
+  font-weight: 800;
+  border-bottom: none;
+  text-align: left;
+}
+
+/* Center layout */
+.slidev-layout.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.slidev-layout.center h1 {
+  border-bottom: none;
+  font-size: 2.8rem;
+}
+
+/* Accent line: a gold top-border for visual punch */
+.accent-top {
+  border-top: 5px solid var(--harpy-talon-gold);
+  padding-top: 2rem;
+}
+
+/* Slide number tag (useful as "1/8" label on carousels) */
+.carousel-page {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--harpy-crown-ash-dark);
+  background: rgba(181, 185, 190, 0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+
+/* Handle and branding footer for carousels */
+.carousel-handle {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 3rem;
+  right: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--harpy-crown-ash-dark);
+}
+
+/* Swipe hint arrow on non-cover slides */
+.swipe-hint {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  font-size: 1.5rem;
+  color: var(--harpy-talon-gold);
+  opacity: 0.6;
+}
+
+/* Hide default Slidev page number and progress — carousels don't need them */
+.slidev-page-number,
+.slidev-progress {
+  display: none !important;
+}
