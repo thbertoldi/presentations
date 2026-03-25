@@ -532,7 +532,7 @@ Mapeia para o intervalo **[−1, 0]**:
 
 ---
 
-# Críticas 2 e 3 + Encerramento
+# Críticas 2 e 3
 
 **Crítica 2 — Fórmula não utilizada**
 
@@ -549,15 +549,17 @@ Os autores apresentam a fórmula Max-Min (errada), mas **não a utilizam**. Na p
 - O **experimento real** usa **5 entradas** (C1–C5) e **1 saída** (custo)
 - A figura parece pertencer a outro contexto
 
-<br>
+---
 
-**Resumo:**
+# Resumo
 
 | # | Problema |
 |---|---|
 | 1 | Fórmula Max-Min com erro — mapeia para [−1, 0] em vez de [0, 1] |
 | 2 | Fórmula não utilizada — dados normalizados por divisão pela referência (B20) |
 | 3 | Diagrama da rede neural não corresponde ao experimento realizado |
+
+<br>
 
 <div class="text-center text-lg mt-4">
 
