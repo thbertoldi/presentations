@@ -1,72 +1,171 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Harpy palette (shared) */
-  --harpy-obsidian: #1A1C20;
-  --harpy-crown-ash: #B5B9BE;
-  --harpy-talon-gold: #F2A900;
-  --harpy-underbelly: #F8F9FA;
-  --harpy-obsidian-light: #2A2D33;
-  --harpy-crown-ash-dark: #8A8F96;
+  /* Harpy palette
+   * Named after the Brazilian Harpy Eagle (Gavião-real).
+   * The largest, most powerful raptor in the Americas.
+   * Obsidian = dark plumage, Crown Ash = grey crest,
+   * Talon Gold = amber eyes and talons, Cream = pale underbelly.
+   * Plumage = charcoal mid-tone for layered surfaces. */
+  --harpy-obsidian: #121318;
+  --harpy-obsidian-light: #1A1B24;
+  --harpy-obsidian-mid: #22242F;
+  --harpy-plumage: #2A2D3A;
+  --harpy-crown-ash: #9DA1AB;
+  --harpy-crown-ash-dark: #6B7080;
   --harpy-crown-ash-light: #D5D8DC;
-  --harpy-talon-gold-dim: rgba(242, 169, 0, 0.15);
+  --harpy-talon-gold: #C8920F;
+  --harpy-talon-gold-bright: #E0A512;
+  --harpy-talon-gold-hot: #F0B820;
+  --harpy-talon-gold-dim: rgba(200, 146, 15, 0.12);
+  --harpy-talon-gold-glow: rgba(200, 146, 15, 0.07);
+  --harpy-cream: #F5F2EB;
+  --harpy-warm-white: #EAE7DF;
+  --harpy-parchment: #E2DFD6;
+
+  /* Font stacks
+   * Bodoni Moda — high-contrast Didone serif with optical sizing.
+   *   Dramatic thick-thin strokes evoke talon precision.
+   *   The typeface of power: editorial mastheads, fashion, authority.
+   *   Variable opsz ensures crisp rendering at every heading size.
+   * DM Sans — warm optical proportions, slightly round, excellent
+   *   x-height for small mobile rendering. The geometric warmth
+   *   creates tension against Bodoni's sharp formality. */
+  --font-heading: 'Bodoni Moda', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   --slidev-theme-primary: var(--harpy-talon-gold);
 }
 
 /*
- * LinkedIn Carousel Layout
- * Square format (1:1), designed for high-impact single-idea slides.
- * Each slide = one card in the carousel.
+ * LinkedIn Carousel — Harpy Design System
+ * Square 1:1 at canvasWidth 540 (scales to 1080 on export).
+ * Aesthetic: apex predator — commanding, precise, no wasted energy.
+ * Editorial thought leadership, not SaaS pitch deck.
  */
 
-/* Base: square slide, generous padding, centered content */
+/* ─── Base ─── */
 .slidev-layout {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   color: var(--harpy-obsidian);
-  background-color: var(--harpy-underbelly) !important;
-  padding: 3.5rem 3rem;
+  background-color: var(--harpy-cream) !important;
+  background-image:
+    /* Diagonal grain — feather texture */
+    repeating-linear-gradient(
+      -55deg,
+      transparent,
+      transparent 8px,
+      rgba(21, 19, 24, 0.012) 8px,
+      rgba(21, 19, 24, 0.012) 9px
+    ),
+    /* Vignette — warm center, cooler edges */
+    radial-gradient(
+      ellipse 75% 65% at 35% 50%,
+      transparent 0%,
+      rgba(21, 19, 24, 0.04) 100%
+    ),
+    /* Gold warmth bleeding from the left stripe */
+    linear-gradient(
+      100deg,
+      rgba(200, 146, 15, 0.05) 0%,
+      transparent 20%
+    ) !important;
+  padding: 1.8rem 1.6rem 1.8rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Headings: large, bold, attention-grabbing */
+/* Gold talon stripe — left accent, slightly thicker */
+.slidev-layout::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(
+    180deg,
+    var(--harpy-talon-gold-bright) 0%,
+    var(--harpy-talon-gold) 60%,
+    rgba(200, 146, 15, 0.3) 100%
+  );
+  z-index: 10;
+}
+
+/* Bottom-right atmospheric glow */
+.slidev-layout::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    circle,
+    rgba(200, 146, 15, 0.05) 0%,
+    rgba(200, 146, 15, 0.02) 40%,
+    transparent 65%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── Typography ─── */
+
+/* Headings: Bodoni Moda — sharp, authoritative, editorial */
 .slidev-layout h1 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 800;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-style: normal;
   color: var(--harpy-obsidian);
-  font-size: 2.8rem;
-  line-height: 1.15;
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   border-bottom: none;
   padding-bottom: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
 }
 
 .slidev-layout h2 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  color: var(--harpy-obsidian);
-  font-size: 2rem;
-  line-height: 1.2;
-  margin-bottom: 0.75rem;
-}
-
-.slidev-layout h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600;
-  color: var(--harpy-crown-ash-dark);
+  color: var(--harpy-obsidian);
   font-size: 1.4rem;
+  line-height: 1.15;
+  letter-spacing: 0;
+  margin-bottom: 0.5rem;
 }
 
-/* Body text: larger for readability on mobile */
+/* H3: mono uppercase label — tactical, mechanical */
+.slidev-layout h3 {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--harpy-talon-gold);
+  margin-bottom: 0.35rem;
+}
+
+/* Body: DM Sans — warm, readable, grounded */
 .slidev-layout p,
 .slidev-layout li {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
-  font-size: 1.3rem;
+  font-size: 0.95rem;
   line-height: 1.5;
   color: var(--harpy-obsidian);
+}
+
+/* Paragraph spacing */
+.slidev-layout p + p {
+  margin-top: 0.5rem;
 }
 
 .slidev-layout strong {
@@ -74,135 +173,272 @@
   color: var(--harpy-obsidian);
 }
 
+/* Bold emphasis — gold bottom slash, like a talon mark */
+.slidev-layout p > strong {
+  border-bottom: 2px solid rgba(200, 146, 15, 0.4);
+  padding-bottom: 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
 /* Links */
 .slidev-layout a {
   color: var(--harpy-talon-gold);
   text-decoration: none;
+  font-weight: 500;
 }
 
-/* Lists: spacious for square format */
+/* ─── Lists ─── */
 .slidev-layout ul {
   list-style: none;
-  padding-left: 1.5rem;
+  padding-left: 0.8rem;
 }
 
 .slidev-layout ul > li {
   position: relative;
-  padding-left: 0.3rem;
-  margin-bottom: 0.6rem;
+  padding-left: 0.2rem;
+  margin-bottom: 0.4rem;
 }
 
+/* Diamond bullets — talon marks */
 .slidev-layout ul > li::before {
   content: '';
   position: absolute;
-  left: -1.1rem;
-  top: 0.6rem;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  left: -0.6rem;
+  top: 0.38rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
   background-color: var(--harpy-talon-gold);
+  transform: rotate(45deg);
 }
 
 .slidev-layout ul ul > li::before {
   background-color: transparent;
-  border: 2px solid var(--harpy-talon-gold);
+  border: 1.5px solid var(--harpy-talon-gold);
+  width: 5px;
+  height: 5px;
 }
 
-/* Ordered lists */
+/* Ordered lists — Bodoni numbers, dramatic sizing */
 .slidev-layout ol {
-  padding-left: 1.8rem;
+  list-style: none;
+  padding-left: 0;
+  counter-reset: li-counter;
 }
 
 .slidev-layout ol > li {
-  margin-bottom: 0.6rem;
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.5rem;
+  counter-increment: li-counter;
 }
 
-.slidev-layout ol > li::marker {
+.slidev-layout ol > li::before {
+  content: counter(li-counter);
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.4rem;
   color: var(--harpy-talon-gold);
-  font-weight: 700;
-  font-size: 1.3rem;
+  line-height: 1;
+  width: 1.3rem;
+  text-align: center;
 }
 
-/* Code: larger for readability */
+/* ─── Code ─── */
 .slidev-layout pre {
-  border-radius: 12px;
-  border: 1px solid rgba(26, 28, 32, 0.12);
-  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(21, 19, 24, 0.1);
+  font-size: 0.5rem;
+  background-color: var(--harpy-obsidian) !important;
 }
 
 .slidev-layout code {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9em;
+  font-family: var(--font-mono);
+  font-size: 0.88em;
 }
 
 .slidev-layout p code,
 .slidev-layout li code {
   background-color: var(--harpy-talon-gold-dim) !important;
   color: var(--harpy-obsidian);
-  padding: 0.15em 0.4em;
-  border-radius: 6px;
-  font-size: 0.9em;
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+  font-size: 0.85em;
+  font-weight: 500;
 }
 
-/* Blockquotes: prominent for carousel impact */
+/* ─── Blockquotes — editorial pull-quotes ─── */
 .slidev-layout blockquote {
+  position: relative;
+  border: none;
   border-left: 4px solid var(--harpy-talon-gold);
-  padding: 0.8rem 1.2rem;
-  margin: 1rem 0;
-  background-color: var(--harpy-talon-gold-dim) !important;
-  border-radius: 0 8px 8px 0;
+  padding: 0.7rem 0.8rem 0.5rem 1rem;
+  margin: 0.6rem 0;
+  background: linear-gradient(
+    160deg,
+    rgba(200, 146, 15, 0.08) 0%,
+    rgba(200, 146, 15, 0.02) 50%,
+    transparent 100%
+  );
+  border-radius: 0 3px 3px 0;
 }
 
+/* Decorative quotation mark — Bodoni's quote glyph is stunning */
+.slidev-layout blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.3rem;
+  left: 0.2rem;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--harpy-talon-gold);
+  opacity: 0.15;
+  line-height: 1;
+}
+
+/* Quote text — body font, slightly heavier for distinction */
 .slidev-layout blockquote p {
+  font-family: var(--font-body);
   font-style: normal;
   font-weight: 500;
   color: var(--harpy-obsidian);
-  font-size: 1.2rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
 }
 
-/* Cover: dark obsidian, big title */
+/* ─── Cover Slide ─── */
 .slidev-layout.cover,
 .slidev-layout.cover.slidev-page {
   background-color: var(--harpy-obsidian) !important;
-  color: var(--harpy-underbelly) !important;
+  background-image:
+    /* Diagonal feather hatch — more visible on dark */
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(245, 242, 235, 0.02) 10px,
+      rgba(245, 242, 235, 0.02) 11px
+    ),
+    /* Asymmetric gold spotlight — draws eye to title area */
+    radial-gradient(
+      ellipse 50% 55% at 20% 55%,
+      rgba(200, 146, 15, 0.09) 0%,
+      rgba(200, 146, 15, 0.03) 40%,
+      transparent 70%
+    ),
+    /* Secondary ambient glow — depth and atmosphere */
+    radial-gradient(
+      ellipse 35% 35% at 85% 25%,
+      rgba(200, 146, 15, 0.04) 0%,
+      transparent 65%
+    ),
+    /* Vertical darkening at edges for cinematic vignette */
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.15) 0%,
+      transparent 15%,
+      transparent 85%,
+      rgba(0, 0, 0, 0.15) 100%
+    ) !important;
+  color: var(--harpy-cream) !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3.5rem 3rem;
+  padding: 1.8rem 1.6rem 1.8rem 2rem;
+  position: relative;
+}
+
+/* Cover: thicker talon stripe with hot gold top */
+.slidev-layout.cover::before {
+  width: 5px;
+  background: linear-gradient(
+    180deg,
+    var(--harpy-talon-gold-hot) 0%,
+    var(--harpy-talon-gold-bright) 30%,
+    var(--harpy-talon-gold) 60%,
+    rgba(200, 146, 15, 0.2) 90%,
+    transparent 100%
+  );
+}
+
+/* Cover: override base ::after with nothing (background handles texture) */
+.slidev-layout.cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: none;
+  pointer-events: none;
 }
 
 .slidev-layout.cover h1 {
-  color: var(--harpy-talon-gold) !important;
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.1;
+  font-family: var(--font-heading);
+  color: var(--harpy-cream) !important;
+  font-size: 2.2rem;
+  font-weight: 900;
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 1;
 }
 
 .slidev-layout.cover p,
 .slidev-layout.cover span,
 .slidev-layout.cover div {
   color: var(--harpy-crown-ash) !important;
+  position: relative;
+  z-index: 1;
 }
 
-/* Section: dark divider card */
+/* ─── Section Divider ─── */
 .slidev-layout.section {
   background-color: var(--harpy-obsidian) !important;
-  color: var(--harpy-underbelly) !important;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(245, 242, 235, 0.02) 10px,
+      rgba(245, 242, 235, 0.02) 11px
+    ),
+    radial-gradient(
+      ellipse 50% 50% at 50% 50%,
+      rgba(200, 146, 15, 0.06) 0%,
+      transparent 65%
+    ) !important;
+  color: var(--harpy-cream) !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3.5rem 3rem;
+  padding: 1.8rem 1.6rem 1.8rem 2rem;
+}
+
+.slidev-layout.section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: none;
+  pointer-events: none;
 }
 
 .slidev-layout.section h1 {
+  font-family: var(--font-heading);
   color: var(--harpy-talon-gold) !important;
-  font-size: 2.8rem;
-  font-weight: 800;
+  font-size: 1.7rem;
+  font-weight: 700;
   border-bottom: none;
   text-align: left;
+  position: relative;
+  z-index: 1;
 }
 
-/* Center layout */
+/* ─── Center Layout ─── */
 .slidev-layout.center {
   display: flex;
   flex-direction: column;
@@ -213,54 +449,192 @@
 
 .slidev-layout.center h1 {
   border-bottom: none;
-  font-size: 2.8rem;
+  font-size: 1.8rem;
 }
 
-/* Accent line: a gold top-border for visual punch */
+/* ─── CTA Slide — dark variant ─── */
+.slidev-layout.center.cta-slide,
+.slidev-layout.center:last-child {
+  background-color: var(--harpy-obsidian) !important;
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(245, 242, 235, 0.02) 10px,
+      rgba(245, 242, 235, 0.02) 11px
+    ),
+    /* Dramatic centered glow — the closing question demands attention */
+    radial-gradient(
+      ellipse 50% 40% at 50% 50%,
+      rgba(200, 146, 15, 0.1) 0%,
+      rgba(200, 146, 15, 0.03) 45%,
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12) 0%,
+      transparent 20%,
+      transparent 80%,
+      rgba(0, 0, 0, 0.12) 100%
+    ) !important;
+}
+
+.slidev-layout.center:last-child::before {
+  width: 5px;
+  background: linear-gradient(
+    180deg,
+    var(--harpy-talon-gold-hot) 0%,
+    var(--harpy-talon-gold-bright) 30%,
+    var(--harpy-talon-gold) 60%,
+    rgba(200, 146, 15, 0.2) 90%,
+    transparent 100%
+  );
+}
+
+.slidev-layout.center:last-child::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: none;
+  pointer-events: none;
+}
+
+/* ─── Utility Classes ─── */
+
+/* Gold accent top border */
 .accent-top {
-  border-top: 5px solid var(--harpy-talon-gold);
-  padding-top: 2rem;
+  border-top: 3px solid var(--harpy-talon-gold);
+  padding-top: 0.9rem;
 }
 
-/* Slide number tag (useful as "1/8" label on carousels) */
+/* Subtitle for cover slides */
+.slide-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--harpy-crown-ash-dark);
+  margin-top: 0.6rem;
+  line-height: 1.4;
+}
+
+/* Pill tag — mono uppercase, tactical label */
+.pill-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.48rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--harpy-talon-gold);
+  background: rgba(200, 146, 15, 0.08);
+  border: 1.5px solid rgba(200, 146, 15, 0.3);
+  padding: 0.18rem 0.5rem;
+  border-radius: 2px;
+  margin-bottom: 0.6rem;
+}
+
+/* VS comparison block */
+.vs-block {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.vs-block .vs-label {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--harpy-talon-gold);
+  text-align: center;
+}
+
+/* Highlight box — gold-edged callout */
+.highlight-box {
+  background: linear-gradient(
+    165deg,
+    rgba(200, 146, 15, 0.10) 0%,
+    rgba(200, 146, 15, 0.03) 100%
+  );
+  border-left: 4px solid var(--harpy-talon-gold);
+  border-top: 1px solid rgba(200, 146, 15, 0.12);
+  padding: 0.6rem 0.8rem;
+  border-radius: 0 3px 3px 0;
+  margin: 0.6rem 0;
+}
+
+/* Large stat display */
+.big-stat {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 2.8rem;
+  color: var(--harpy-talon-gold);
+  line-height: 1;
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.02em;
+}
+
+/* Divider rule — talon scratch (wider, sharper) */
+.gold-rule {
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--harpy-talon-gold) 0%,
+    var(--harpy-talon-gold-bright) 70%,
+    transparent 100%
+  );
+  border: none;
+  margin: 0.6rem 0;
+  border-radius: 0;
+}
+
+/* ─── Carousel Navigation ─── */
+
 .carousel-page {
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
+  top: 0.6rem;
+  right: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   color: var(--harpy-crown-ash-dark);
-  background: rgba(181, 185, 190, 0.15);
-  padding: 0.2rem 0.6rem;
-  border-radius: 6px;
+  background: rgba(21, 19, 24, 0.05);
+  padding: 0.12rem 0.35rem;
+  border-radius: 2px;
+  z-index: 20;
 }
 
-/* Handle and branding footer for carousels */
-.carousel-handle {
-  position: absolute;
-  bottom: 1.2rem;
-  left: 3rem;
-  right: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  color: var(--harpy-crown-ash-dark);
+/* Dark slides — light page numbers */
+.slidev-layout.cover .carousel-page,
+.slidev-layout.section .carousel-page,
+.slidev-layout.center:last-child .carousel-page {
+  background: rgba(245, 242, 235, 0.06);
+  color: var(--harpy-crown-ash);
 }
 
-/* Swipe hint arrow on non-cover slides */
 .swipe-hint {
   position: absolute;
-  bottom: 1.2rem;
-  right: 1.2rem;
-  font-size: 1.5rem;
+  bottom: 0.6rem;
+  right: 0.8rem;
+  font-size: 0.8rem;
+  z-index: 20;
+  font-weight: 600;
   color: var(--harpy-talon-gold);
-  opacity: 0.6;
+  opacity: 0.45;
+  animation: swipe-pulse 2.5s ease-in-out infinite;
 }
 
-/* Hide default Slidev page number and progress — carousels don't need them */
+@keyframes swipe-pulse {
+  0%, 100% { opacity: 0.35; transform: translateX(0); }
+  50% { opacity: 0.7; transform: translateX(2px); }
+}
+
+/* ─── Hide Slidev defaults ─── */
 .slidev-page-number,
 .slidev-progress {
   display: none !important;

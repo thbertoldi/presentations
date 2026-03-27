@@ -6,7 +6,7 @@ theme: default
 colorSchema: light
 highlighter: shiki
 aspectRatio: 1/1
-canvasWidth: 1080
+canvasWidth: 540
 drawings:
   persist: false
 transition: slide-left
@@ -18,11 +18,13 @@ export:
 
 # Your bold headline goes here
 
-<p class="text-xl mt-4" style="color: var(--harpy-crown-ash-dark);">A subtitle that hooks the reader into swiping.</p>
+<p class="slide-subtitle">A subtitle that hooks the reader into swiping.</p>
 
 ---
 
 # The problem
+
+<span class="pill-tag">Context</span>
 
 Most people think about X the wrong way.
 
@@ -34,7 +36,9 @@ But what actually matters is **the system underneath**.
 
 # The shift
 
-<div class="accent-top">
+<hr class="gold-rule" />
+
+<div class="highlight-box">
 
 Old way: memorize everything
 
@@ -61,7 +65,7 @@ layout: center
 class: text-center
 ---
 
-<div>
-  <h1 style="color: var(--harpy-talon-gold);">Follow for more</h1>
-  <p class="text-xl mt-4" style="color: var(--harpy-crown-ash-dark);">@thbertoldi</p>
+<div style="position: relative; z-index: 1;">
+  <h1 style="color: var(--harpy-talon-gold);">Agree? Disagree?</h1>
+  <p class="text-xl mt-4" style="color: var(--harpy-crown-ash);">Share your take in the comments.</p>
 </div>
