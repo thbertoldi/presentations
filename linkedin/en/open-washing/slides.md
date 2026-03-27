@@ -34,7 +34,7 @@ Releasing weights alone is called **open weights** — and it's not the same thi
 
 ---
 
-# What "open source" actually means
+# What "open source" actually requires
 
 The Open Source Initiative demands **full transparency**:
 
@@ -51,17 +51,23 @@ Anything less is **not** open source.
 
 <span class="pill-tag">Open-Washing</span>
 
+Liesenfeld and Dingemanse describe it precisely:
+
 > "Companies gain goodwill for openness without disclosing critical information — escaping scientific scrutiny and legal exposure."
 
 ---
 
-# The real motive
+# The double smokescreen
 
-They wave "AI Safety" to keep specs secret.
+They wave **"AI Safety"** to keep specs secret.
 
-But it's really about **shielding against copyright litigation** and avoiding compliance costs.
+But as the research shows, it's really about **shielding against copyright litigation** and avoiding compliance costs.
 
-The safety argument is a smokescreen.
+<div class="highlight-box">
+
+Even the documentation they do publish is deliberately shallow — creating an **illusion of transparency**.
+
+</div>
 
 ---
 
@@ -71,7 +77,7 @@ The safety argument is a smokescreen.
 
 Stop thinking **open vs. closed**.
 
-AI openness is necessarily **composite and gradient**.
+As Liesenfeld and Dingemanse argue, openness in AI is necessarily **composite and gradient**.
 
 We need transparency metrics — not binary labels.
 

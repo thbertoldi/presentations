@@ -34,33 +34,37 @@ The goal: let researchers and small companies innovate freely.
 
 ---
 
-# What actually happened
+# The exploit
 
-Big Tech exploits this exemption to **dodge compliance costs**.
+Big Tech releases **open weights** (not full open source), slaps the "open source" label on it, and claims the exemption.
 
-The "open source" label becomes a legal shield — not a transparency commitment.
+As Liesenfeld and Dingemanse show:
+
+> "Obtaining open source status offers a way to escape the most burdensome requirements for technical documentation."
 
 ---
 
-# Who pays the price
+# The cascade
 
 The original developers are off the hook.
 
-Responsibility shifts to **downstream users**.
+Compliance burden transfers to **downstream users**.
 
 <div class="highlight-box">
 
-Small and medium businesses get crushed by the compliance burden they never created.
+Small and medium businesses get crushed by obligations they never created — while Big Tech walks free.
 
 </div>
 
 ---
 
-# The transfer mechanism
+# The mechanism
 
-> "Obtaining open source status offers a way to escape the most burdensome requirements for technical documentation."
+Muehlhoff and Ruschemeier confirm:
 
-Big Tech gets the exemption. SMEs get the liability.
+Open source AI models are **frequently exempt** from the AI Act's scope entirely.
+
+The exemption designed to protect innovators becomes a **compliance escape hatch** for the largest players.
 
 ---
 

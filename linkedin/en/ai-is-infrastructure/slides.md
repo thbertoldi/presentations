@@ -24,19 +24,21 @@ export:
 
 # The broken assumption
 
-Current laws demand a clear **"intended purpose"** for AI systems.
+The EU AI Act demands a clear **"intended purpose"** for AI systems.
 
 But foundation models are **general-purpose by nature**.
 
-Their intended purpose is impossible to define upfront.
+You can't pin down the purpose of a technology designed to do everything.
 
 ---
 
-# The analogy
+# The research view
 
-You can't define the purpose of a foundation model any more than you can define the purpose of **electricity**.
+Calenzone et al. put it bluntly:
 
-> "AI is not a product, but a technology to build products."
+> "We strongly believe that AI is not a product, but a technology to build products."
+
+This isn't a semantic debate — it defines **who is responsible for what**.
 
 ---
 
@@ -68,6 +70,8 @@ This gap breaks governance from the start.
 
 Move governance from **development control** (upstream) to **usage control** (downstream).
 
+As Muehlhoff and Ruschemeier argue:
+
 > "This does not prevent models from being published freely, but regulates how they can be used."
 
 ---
@@ -77,7 +81,7 @@ Move governance from **development control** (upstream) to **usage control** (do
 1. Models stay **open and accessible**
 2. Purpose limitations apply at the **point of use**
 3. Innovation is preserved, risk is managed
-4. Responsibility lands where decisions are made
+4. Responsibility lands where **decisions are made**
 
 ---
 layout: center

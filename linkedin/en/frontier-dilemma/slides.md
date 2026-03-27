@@ -26,27 +26,27 @@ export:
 
 <span class="pill-tag">Meta's Narrative</span>
 
-Meta says open source AI will:
+Meta's manifesto frames open source AI as a **moral imperative**:
 
-1. Break monopolies
-2. Give everyone access
-3. Make the ecosystem safer
+It breaks monopolies, gives everyone access, and makes the ecosystem safer.
 
-They frame democratization as a **moral imperative**.
+But researchers see a darker side.
 
 ---
 
-# The researcher warning
+# Purpose creep
+
+Muehlhoff warns:
 
 > "Making a trained model available as open source significantly amplifies the risks of uncontrollable secondary use."
 
-This is called **purpose creep**.
+Open access means **uncontrollable purpose drift** — what researchers call **purpose creep**.
 
 ---
 
 # When openness becomes a weapon
 
-Open source generators help bad actors **evade AI content detectors**.
+As Knott shows, open source generators help bad actors **evade AI content detectors**.
 
 <div class="highlight-box">
 
@@ -58,9 +58,11 @@ They provide a platform to explore evasion methods — turning openness against 
 
 # The emerging consensus
 
+Security experts converge on a clear position:
+
 Not all AI capabilities should be democratized under the "open source" banner.
 
-Frontier models with systemic capabilities need **clear red lines**.
+Frontier models with systemic capabilities need **computational limits** and clear **red lines**.
 
 ---
 
@@ -78,5 +80,5 @@ class: text-center
 ---
 
 <div style="position: relative; z-index: 1;">
-  <h1 style="color: var(--harpy-talon-gold);">Where do you draw the line?</h1>
+  <h1 style="color: var(--harpy-talon-gold);">Where do you draw the line between democratization and risk?</h1>
 </div>
