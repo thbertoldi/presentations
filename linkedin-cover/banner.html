@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1584">
+<title>LinkedIn Banner — Thiago Bertoldi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --obsidian: #121318;
+    --obsidian-light: #1A1B24;
+    --plumage: #2A2D3A;
+    --crown-ash: #9DA1AB;
+    --crown-ash-dark: #6B7080;
+    --talon-gold: #C8920F;
+    --talon-gold-bright: #E0A512;
+    --talon-gold-hot: #F0B820;
+    --cream: #F5F2EB;
+    --parchment: #E2DFD6;
+  }
+
+  body {
+    width: 1584px;
+    height: 396px;
+    overflow: hidden;
+    background: var(--obsidian);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .banner {
+    position: relative;
+    width: 1584px;
+    height: 396px;
+    overflow: hidden;
+    background: var(--obsidian);
+  }
+
+  /* ─── Atmospheric layers ─── */
+
+  /* Diagonal feather hatch — signature Harpy texture */
+  .banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 12px,
+      rgba(245, 242, 235, 0.03) 12px,
+      rgba(245, 242, 235, 0.03) 13px
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Secondary counter-hatch for depth */
+  .banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      -30deg,
+      transparent,
+      transparent 20px,
+      rgba(245, 242, 235, 0.015) 20px,
+      rgba(245, 242, 235, 0.015) 21px
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Gold atmospheric glows */
+  .glow-primary {
+    position: absolute;
+    width: 700px;
+    height: 500px;
+    top: -100px;
+    right: 200px;
+    background: radial-gradient(
+      ellipse 55% 60% at 50% 50%,
+      rgba(200, 146, 15, 0.10) 0%,
+      rgba(200, 146, 15, 0.04) 40%,
+      transparent 70%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .glow-secondary {
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    bottom: -120px;
+    left: 350px;
+    background: radial-gradient(
+      ellipse 50% 50% at 50% 50%,
+      rgba(200, 146, 15, 0.05) 0%,
+      rgba(200, 146, 15, 0.02) 45%,
+      transparent 70%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Edge vignette */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,0.25) 0%, transparent 12%, transparent 88%, rgba(0,0,0,0.25) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 18%, transparent 82%, rgba(0,0,0,0.2) 100%);
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  /* ─── Gold talon stripe — left signature ─── */
+  .talon-stripe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(
+      180deg,
+      var(--talon-gold-hot) 0%,
+      var(--talon-gold-bright) 25%,
+      var(--talon-gold) 55%,
+      rgba(200, 146, 15, 0.2) 85%,
+      transparent 100%
+    );
+    z-index: 10;
+  }
+
+  /* ─── Horizontal rule — editorial divider ─── */
+  .editorial-rule {
+    position: absolute;
+    bottom: 76px;
+    left: 80px;
+    right: 80px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(200, 146, 15, 0.2) 15%,
+      rgba(200, 146, 15, 0.3) 50%,
+      rgba(200, 146, 15, 0.2) 85%,
+      transparent 100%
+    );
+    z-index: 4;
+  }
+
+  /* ─── Content ─── */
+  .content {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 80px;
+  }
+
+  /* Top area — domain tags */
+  .domain-tags {
+    position: absolute;
+    top: 48px;
+    right: 80px;
+    display: flex;
+    gap: 24px;
+    z-index: 5;
+  }
+
+  .domain-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--crown-ash);
+  }
+
+  .domain-tag.active {
+    color: var(--talon-gold-bright);
+  }
+
+  /* Center — main statement, positioned right of profile photo area */
+  .statement {
+    margin-left: 310px;
+    max-width: 950px;
+  }
+
+  .statement-main {
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 56px;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+  }
+
+  .statement-main em {
+    font-style: italic;
+    color: var(--talon-gold-bright);
+  }
+
+  .statement-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--parchment);
+    margin-top: 16px;
+    max-width: 560px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Bottom — credentials bar */
+  .credentials {
+    position: absolute;
+    bottom: 40px;
+    right: 80px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    z-index: 5;
+  }
+
+  .credential-divider {
+    width: 1px;
+    height: 14px;
+    background: var(--plumage);
+  }
+
+  .credential {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--crown-ash);
+  }
+
+  .credential strong {
+    color: var(--parchment);
+    font-weight: 500;
+  }
+
+  /* ─── Decorative — talon scratch marks ─── */
+  .scratch {
+    position: absolute;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .scratch-1 {
+    top: 70px;
+    left: 280px;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--talon-gold), transparent);
+    opacity: 0.3;
+    transform: rotate(-35deg);
+  }
+
+  .scratch-2 {
+    top: 82px;
+    left: 290px;
+    width: 28px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--talon-gold), transparent);
+    opacity: 0.2;
+    transform: rotate(-35deg);
+  }
+
+  .scratch-3 {
+    bottom: 90px;
+    right: 180px;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(270deg, var(--talon-gold), transparent);
+    opacity: 0.22;
+    transform: rotate(20deg);
+  }
+
+  /* ─── Diamond mark — bottom left area ─── */
+  .diamond-mark {
+    position: absolute;
+    bottom: 44px;
+    left: 80px;
+    width: 8px;
+    height: 8px;
+    background: var(--talon-gold);
+    transform: rotate(45deg);
+    opacity: 0.45;
+    z-index: 5;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <!-- Atmospheric layers -->
+  <div class="glow-primary"></div>
+  <div class="glow-secondary"></div>
+  <div class="vignette"></div>
+
+  <!-- Signature elements -->
+  <div class="talon-stripe"></div>
+  <div class="editorial-rule"></div>
+
+  <!-- Decorative scratches -->
+  <div class="scratch scratch-1"></div>
+  <div class="scratch scratch-2"></div>
+  <div class="scratch scratch-3"></div>
+  <div class="diamond-mark"></div>
+
+  <!-- Domain tags — top right -->
+  <div class="domain-tags">
+    <span class="domain-tag active">AI Governance</span>
+    <span class="domain-tag">AI Architecture</span>
+    <span class="domain-tag">Reliable AI</span>
+    <span class="domain-tag">Open Source</span>
+  </div>
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="statement">
+      <div class="statement-main">
+        Designing AI systems that are<br>
+        observable, <em>accountable</em>,<br>
+        and open.
+      </div>
+      <div class="statement-sub">
+        Where systems architecture meets governance research.
+      </div>
+    </div>
+  </div>
+
+  <!-- Credentials bar — bottom right -->
+  <div class="credentials">
+    <span class="credential"><strong>SUSE</strong> · AI Engineering</span>
+    <div class="credential-divider"></div>
+    <span class="credential"><strong>UFSC</strong> · MSc AI Governance</span>
+    <div class="credential-divider"></div>
+    <span class="credential">Florianópolis, BR</span>
+  </div>
+</div>
+
+</body>
+</html>
